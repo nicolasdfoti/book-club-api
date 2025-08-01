@@ -68,9 +68,7 @@ router.get("/:id", controller.getSingleBook);
  *       201:
  *         description: Book created
  */
-router.post("/", 
-    bookValidation,
-    controller.createBook);
+router.post("/", controller.createBook);
 
 // put routes
 
@@ -108,9 +106,7 @@ router.post("/",
  *       200:
  *         description: Book updated
  */
-router.put("/:id", 
-    bookValidation,
-    controller.updateBook);
+router.put("/:id", controller.updateBook);
 
 // delete routes
 
