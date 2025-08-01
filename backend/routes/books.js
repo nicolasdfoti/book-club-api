@@ -21,7 +21,7 @@ router.get("/", controller.getAllBooks);
  * @swagger
  * /books/{id}:
  *   get:
- *     summary: Obtener un libro por ID
+ *     summary: Get a book by ID
  *     tags:
  *       - Books
  *     parameters:
