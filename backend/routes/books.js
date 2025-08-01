@@ -7,12 +7,12 @@ router.get("/all", controller.getAllBooks);
 router.get("/:id", controller.getSingleBook);
 
 // post routes
-router.post("/", bookValidation, controller.createBook);
+router.post("/", controller.createBook);
 
 // put routes
-router.put("/:id", bookValidation, controller.updateBook);
+router.put("/:id", controller.updateBook);
 
 // delete routes
-router.delete(":id", bookValidation, controller.deleteBook);
+router.delete("/:id", controller.deleteBook);
 
 module.exports = router;
