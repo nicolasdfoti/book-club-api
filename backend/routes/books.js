@@ -70,8 +70,7 @@ router.get("/:id", controller.getSingleBook);
  */
 router.post("/", controller.createBook);
 
-// put routes
-
+// PUT route to update a book
 /**
  * @swagger
  * /books/{id}:
@@ -106,10 +105,9 @@ router.post("/", controller.createBook);
  *       200:
  *         description: Book updated
  */
-router.put("/:id", controller.updateBook);
+router.put("/:id", bookController.updateBook);
 
-// delete routes
-
+// DELETE route to delete a book
 /**
  * @swagger
  * /books/{id}:
@@ -128,6 +126,6 @@ router.put("/:id", controller.updateBook);
  *       200:
  *         description: Book deleted
  */
-router.delete("/:id", controller.deleteBook);
+router.delete("/:id", bookController.deleteBook);
 
 module.exports = router;
