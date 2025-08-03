@@ -5,13 +5,13 @@ const swaggerOptions = {
     swaggerDefinition: {
         openapi: '3.0.0',
         info: {
-            title: 'Your Project API',
+            title: 'Book Club API',
             version: '1.0.0',
-            description: 'API documentation for your project',
+            description: 'This is the CSE 341 Final Group Project: Book Club API',
         },
         servers: [
             {
-                url: 'http://localhost:3000', 
+                url: 'https://book-club-api-ktdq.onrender.com/', 
             },
         ],
     },

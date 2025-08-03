@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "https://book-club-api-ktdq.onrender.com/"
     }
   ],
   "paths": {
