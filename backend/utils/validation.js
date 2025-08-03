@@ -7,12 +7,13 @@ const bookValidation = Joi.object({
   numberPages: Joi.number().integer().optional(),
 });
 
-const groupValidation = Joi.object({
-  bookName: Joi.string().min(3).max(30).required(),
+const userValidation = Joi.object({
   userName: Joi.string().min(3).max(30).required(),
+  userSurname: Joi.string().min(3).max(30).required(),
+  userAge: Joi.number().required()
 });
 
 module.exports = {
   bookValidation,
-  groupValidation,
+  userValidation,
 };

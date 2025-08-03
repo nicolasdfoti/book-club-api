@@ -65,8 +65,10 @@ router.get("/:id", controller.getSingleBook);
  *               numberPages:
  *                 type: integer
  *     responses:
- *       201:
- *         description: Book created
+ *       200:
+ *         description: Book updated
+ *       500:
+ *         description: Book not created
  */
 router.post("/", controller.createBook);
 
@@ -104,8 +106,10 @@ router.post("/", controller.createBook);
  *     responses:
  *       200:
  *         description: Book updated
+ *       500:
+ *         description: Book not created
  */
-router.put("/:id", bookController.updateBook);
+router.put("/:id", controller.updateBook);
 
 // DELETE route to delete a book
 /**
@@ -125,7 +129,9 @@ router.put("/:id", bookController.updateBook);
  *     responses:
  *       200:
  *         description: Book deleted
+ *       500:
+ *         description: Book not deleted
  */
-router.delete("/:id", bookController.deleteBook);
+router.delete("/:id", controller.deleteBook);
 
 module.exports = router;
