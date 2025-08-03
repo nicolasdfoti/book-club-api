@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const booksRoute = require("./books.js");
+const usersRoute = require("./users.js");
 const path = require("path");
 const passport = require("passport");
 
@@ -8,5 +9,6 @@ router.get("/", (req, res) => {
 });
 
 router.use("/books", booksRoute);
+router.use("/users", usersRoute);
 
 module.exports = router;
