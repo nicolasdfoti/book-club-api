@@ -2,7 +2,7 @@ const Joi = require("@hapi/joi");
 
 const bookValidation = Joi.object({
   bookName: Joi.string().min(3).max(30).required(),
-  author: Joi.string().email().required(),
+  author: Joi.string().string().required(),
   publishedDate: Joi.date().optional(),
   numberPages: Joi.number().integer().optional(),
 });
@@ -10,7 +10,7 @@ const bookValidation = Joi.object({
 const userValidation = Joi.object({
   userName: Joi.string().min(3).max(30).required(),
   userSurname: Joi.string().min(3).max(30).required(),
-  userAge: Joi.number().required()
+  userAge: Joi.number().required(),
 });
 
 module.exports = {
