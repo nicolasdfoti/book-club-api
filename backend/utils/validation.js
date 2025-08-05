@@ -2,7 +2,7 @@ const Joi = require("@hapi/joi");
 
 const bookValidation = Joi.object({
   bookName: Joi.string().min(3).max(30).required(),
-  author: Joi.string().string().required(),
+  author: Joi.string().required(),
   publishedDate: Joi.date().optional(),
   numberPages: Joi.number().integer().optional(),
 });
