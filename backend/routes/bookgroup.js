@@ -1,52 +1,52 @@
 const router = require("express").Router();
-const controller = require("../controllers/bookController.js");
+const controller = require("../controllers/bookGroupController.js");
 
 // get routes
 
 /**
  * @swagger
- * /books:
+ * /book-groups:
  *   get:
- *     summary: Get all books
+ *     summary: Get all book Groups
  *     tags:
- *       - Books
+ *       - BookGroups
  *     responses:
  *       200:
- *         description: Books list
+ *         description: Book Goups list
  */
-router.get("/", controller.getAllBooks);
+router.get("/", controller.getAllBookGroups);
 
 /**
  * @swagger
- * /books/{id}:
+ * /book-groups/{id}:
  *   get:
- *     summary: Get a book by ID
+ *     summary: Get a book-group by ID
  *     tags:
- *       - Books
+ *       - BookGroups
  *     parameters:
  *       - name: id
  *         in: path
  *         required: true
- *         description: Book ID
+ *         description: BookGroup ID
  *         schema:
  *           type: string
  *     responses:
  *       200:
- *         description: Book found
+ *         description: Book Groups found
  *       404:
- *         description: Book not found
+ *         description: Book Groups not found
  */
-router.get("/:id", controller.getSingleBook);
+router.get("/:id", controller.getSingleBookGroup);
 
 // post routes
 
 /**
  * @swagger
- * /books:
+ * /book-groups:
  *   post:
- *     summary: Create a new book
+ *     summary: Create a new Book Group
  *     tags:
- *       - Books
+ *       - BookGroups
  *     requestBody:
  *       required: true
  *       content:
@@ -54,38 +54,37 @@ router.get("/:id", controller.getSingleBook);
  *           schema:
  *             type: object
  *             properties:
+ *               groupName:
+ *                 type: string
+ *               groupDescription:
+ *                 type: string
  *               bookName:
  *                 type: string
- *               author:
+ *               groupMembers:
  *                 type: string
- *               publishedDate:
- *                 type: string
- *                 format: date
- *               numberPages:
- *                 type: integer
  *     responses:
  *       200:
- *         description: Book updated
+ *         description: Book Group created
  *       500:
- *         description: Book not created
+ *         description: Book Group not created
  */
-router.post("/", controller.createBook);
+router.post("/", controller.createBookGroup);
 
 // PUT route to update a book
 /**
  * @swagger
- * /books/{id}:
+ * /book-groups/{id}:
  *   put:
- *     summary: Update a book using the ID
+ *     summary: Update a book group using the ID
  *     tags:
- *       - Books
+ *       - BookGroups
  *     parameters:
  *       - name: id
  *         in: path
  *         required: true
  *         schema:
  *           type: string
- *         description: Book ID
+ *         description: BookGroup ID
  *     requestBody:
  *       required: true
  *       content:
@@ -93,44 +92,43 @@ router.post("/", controller.createBook);
  *           schema:
  *             type: object
  *             properties:
+ *               groupName:
+ *                 type: string
+ *               groupDescription:
+ *                 type: string
  *               bookName:
  *                 type: string
- *               author:
+ *               groupMembers:
  *                 type: string
- *               publishedDate:
- *                 type: string
- *                 format: date
- *               numberPages:
- *                 type: integer
  *     responses:
  *       200:
- *         description: Book updated
+ *         description: Book Group updated
  *       500:
- *         description: Book not created
+ *         description: Book Group not updated
  */
-router.put("/:id", controller.updateBook);
+router.put("/:id", controller.updateBookGroup);
 
 // DELETE route to delete a book
 /**
  * @swagger
- * /books/{id}:
+ * /book-groups/{id}:
  *   delete:
  *     summary: Delete a book using ID
  *     tags:
- *       - Books
+ *       - BookGroups
  *     parameters:
  *       - name: id
  *         in: path
  *         required: true
- *         description: Book ID
+ *         description: BookGroup ID
  *         schema:
  *           type: string
  *     responses:
  *       200:
- *         description: Book deleted
+ *         description: Book Group deleted
  *       500:
- *         description: Book not deleted
+ *         description: Book Group not deleted
  */
-router.delete("/:id", controller.deleteBook);
+router.delete("/:id", controller.deleteBookGroup);
 
 module.exports = router;

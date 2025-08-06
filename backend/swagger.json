@@ -3,7 +3,7 @@
   "info": {
     "title": "Book Club API",
     "version": "1.0.0",
-    "description": "API documentation for the Book Club application"
+    "description": "This is the CSE 341 Final Group Project: Book Club API"
   },
   "servers": [
     {
@@ -11,50 +11,69 @@
     }
   ],
   "paths": {
-    "/api/authors": {
+    "/book-groups": {
       "get": {
-        "summary": "Retrieve a list of authors",
+        "summary": "Get all book Groups",
+        "tags": [
+          "BookGroups"
+        ],
         "responses": {
           "200": {
-            "description": "A list of authors",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "bio": {
-                        "type": "string"
-                      },
-                      "birthDate": {
-                        "type": "string",
-                        "format": "date"
-                      }
-                    }
+            "description": "Book Goups list"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Book Group",
+        "tags": [
+          "BookGroups"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupName": {
+                    "type": "string"
+                  },
+                  "groupDescription": {
+                    "type": "string"
+                  },
+                  "bookName": {
+                    "type": "string"
+                  },
+                  "groupMembers": {
+                    "type": "string"
                   }
                 }
               }
             }
           }
+        },
+        "responses": {
+          "200": {
+            "description": "Book Group created"
+          },
+          "500": {
+            "description": "Book Group not created"
+          }
         }
       }
     },
-    "/api/authors/{id}": {
+    "/book-groups/{id}": {
       "get": {
-        "summary": "Retrieve a specific author by ID",
+        "summary": "Get a book-group by ID",
+        "tags": [
+          "BookGroups"
+        ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "ID of the author to retrieve",
+            "description": "BookGroup ID",
             "schema": {
               "type": "string"
             }
@@ -62,35 +81,541 @@
         ],
         "responses": {
           "200": {
-            "description": "Author details",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "bio": {
-                      "type": "string"
-                    },
-                    "birthDate": {
-                      "type": "string",
-                      "format": "date"
-                    }
+            "description": "Book Groups found"
+          },
+          "404": {
+            "description": "Book Groups not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a book group using the ID",
+        "tags": [
+          "BookGroups"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "BookGroup ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupName": {
+                    "type": "string"
+                  },
+                  "groupDescription": {
+                    "type": "string"
+                  },
+                  "bookName": {
+                    "type": "string"
+                  },
+                  "groupMembers": {
+                    "type": "string"
                   }
                 }
               }
             }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Book Group updated"
+          },
+          "500": {
+            "description": "Book Group not updated"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a book using ID",
+        "tags": [
+          "BookGroups"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "BookGroup ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book Group deleted"
+          },
+          "500": {
+            "description": "Book Group not deleted"
+          }
+        }
+      }
+    },
+    "/book-groups-comments": {
+      "get": {
+        "summary": "Get all book Groups comments",
+        "tags": [
+          "BookGroupsComments"
+        ],
+        "responses": {
+          "200": {
+            "description": "Book Goups list"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Book Group Comment",
+        "tags": [
+          "BookGroupsComments"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "commentText": {
+                    "type": "string"
+                  },
+                  "userName": {
+                    "type": "string"
+                  },
+                  "bookGroupId": {
+                    "type": "string"
+                  },
+                  "commentDate": {
+                    "type": "date"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Book Group Comment created"
+          },
+          "500": {
+            "description": "Book Group Comment not created"
+          }
+        }
+      }
+    },
+    "/book-groups-comments/{id}": {
+      "get": {
+        "summary": "Get a book-group-comments by ID",
+        "tags": [
+          "BookGroupsComments"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "BookGroupComments ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book Groups Comment found"
           },
           "404": {
-            "description": "Author not found"
+            "description": "Book Groups Comment not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a book group comments using the ID",
+        "tags": [
+          "BookGroups"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "BookGroupComments ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "commentText": {
+                    "type": "string"
+                  },
+                  "userName": {
+                    "type": "string"
+                  },
+                  "bookGroupId": {
+                    "type": "string"
+                  },
+                  "commentDate": {
+                    "type": "date"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Book Group Comment updated"
+          },
+          "500": {
+            "description": "Book Group Comment not updated"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a book group comment using ID",
+        "tags": [
+          "BookGroupsComments"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "BookGroupComments ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book Group Comment deleted"
+          },
+          "500": {
+            "description": "Book Group Comment not deleted"
+          }
+        }
+      }
+    },
+    "/books": {
+      "get": {
+        "summary": "Get all books",
+        "tags": [
+          "Books"
+        ],
+        "responses": {
+          "200": {
+            "description": "Books list"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new book",
+        "tags": [
+          "Books"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "bookName": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "publishedDate": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "numberPages": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Book updated"
+          },
+          "500": {
+            "description": "Book not created"
+          }
+        }
+      }
+    },
+    "/books/{id}": {
+      "get": {
+        "summary": "Get a book by ID",
+        "tags": [
+          "Books"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Book ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book found"
+          },
+          "404": {
+            "description": "Book not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a book using the ID",
+        "tags": [
+          "Books"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Book ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "bookName": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "publishedDate": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "numberPages": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Book updated"
+          },
+          "500": {
+            "description": "Book not created"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a book using ID",
+        "tags": [
+          "Books"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Book ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book deleted"
+          },
+          "500": {
+            "description": "Book not deleted"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "Get all users",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "Users list"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new user",
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "userSurname": {
+                    "type": "string"
+                  },
+                  "userAge": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User created"
+          },
+          "500": {
+            "description": "User not created"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "Get a user by ID",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "User ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User found"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a user using the ID",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "User ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "userSurname": {
+                    "type": "string"
+                  },
+                  "userAge": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Book updated"
+          },
+          "500": {
+            "description": "User not created"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a user using ID",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "User ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User deleted"
+          },
+          "500": {
+            "description": "User not deleted"
           }
         }
       }
     }
-  }
+  },
+  "components": {},
+  "tags": []
 }
