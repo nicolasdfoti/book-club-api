@@ -1,10 +1,23 @@
 const express = require("express");
 const path = require("path");
+const { auth } = require("express-openid-connect");
+const env = require("dotenv").config();
 const app = express();
+
+// Auth0 configuration
+const config = {
+	authRequired: false,
+	auth0Logout: true,
+	secret: process.env.SECRET,
+	baseURL: process.env.BASE_URL,
+	clientID: process.env.CLIENT_ID,
+	issuerBaseURL: process.env.ISSUER_BASE_URL
+}
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(auth(config));
 
 const db = require("./data/db");
 const setupSwagger = require("./swagger");
