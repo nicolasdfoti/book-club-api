@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const controller = require("../controllers/userController");
+const { requiresAuth } = require("express-openid-connect");
 
 /**
  * @swagger
@@ -62,7 +63,7 @@ router.get("/:id", controller.getSingleUser);
  *       500:
  *         description: User not created
  */
-router.post("/", controller.createUser);
+router.post("/", requiresAuth(), controller.createUser);
 
 /**
  * @swagger
@@ -97,7 +98,7 @@ router.post("/", controller.createUser);
  *       500:
  *         description: User not created
  */
-router.put("/:id", controller.updateUser);
+router.put("/:id", requiresAuth(), controller.updateUser);
 
 /**
  * @swagger
@@ -119,6 +120,6 @@ router.put("/:id", controller.updateUser);
  *       500:
  *         description: User not deleted
  */
-router.delete("/:id", controller.deleteUser);
+router.delete("/:id", requiresAuth(), controller.deleteUser);
 
 module.exports = router;

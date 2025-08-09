@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const controller = require("../controllers/bookController.js");
+const { requiresAuth } = require("express-openid-connect");
 
 // get routes
 
@@ -69,7 +70,7 @@ router.get("/:id", controller.getSingleBook);
  *       500:
  *         description: Book not created
  */
-router.post("/", controller.createBook);
+router.post("/", requiresAuth(), controller.createBook);
 
 // PUT route to update a book
 /**
@@ -108,7 +109,7 @@ router.post("/", controller.createBook);
  *       500:
  *         description: Book not created
  */
-router.put("/:id", controller.updateBook);
+router.put("/:id", requiresAuth(), controller.updateBook);
 
 // DELETE route to delete a book
 /**
@@ -131,6 +132,6 @@ router.put("/:id", controller.updateBook);
  *       500:
  *         description: Book not deleted
  */
-router.delete("/:id", controller.deleteBook);
+router.delete("/:id", requiresAuth(), controller.deleteBook);
 
 module.exports = router;

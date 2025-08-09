@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const controller = require("../controllers/bookGroupCommentsController.js");
+const { requiresAuth } = require("express-openid-connect");
 
 /**
  * @swagger
@@ -64,7 +65,7 @@ router.get("/:id", controller.getSingleBookGroupComment);
  *       500:
  *         description: Book Group Comment not created
  */
-router.post("/", controller.createBookGroupComment);
+router.post("/", requiresAuth(), controller.createBookGroupComment);
 
 /**
  * @swagger
@@ -101,7 +102,7 @@ router.post("/", controller.createBookGroupComment);
  *       500:
  *         description: Book Group Comment not updated
  */
-router.put("/:id", controller.updateBookGroupComment);
+router.put("/:id", requiresAuth(), controller.updateBookGroupComment);
 
 /**
  * @swagger
@@ -123,6 +124,6 @@ router.put("/:id", controller.updateBookGroupComment);
  *       500:
  *         description: Book Group Comment not deleted
  */
-router.delete("/:id", controller.deleteBookGroupComment);
+router.delete("/:id", requiresAuth(),  controller.deleteBookGroupComment);
 
 module.exports = router;
