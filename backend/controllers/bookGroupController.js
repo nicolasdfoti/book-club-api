@@ -5,7 +5,7 @@ const { bookGroupValidation } = require("../utils/validation.js");
 const getAllBookGroups = async (req, res) => {
   try {
     const database = await mongodb.getDb();
-    const cursor = database.collection("bookGroups").find();
+    const cursor = database.collection("book_group").find();
     const bookGroups = await cursor.toArray();
     res.status(200).json(bookGroups);
   } catch (err) {
