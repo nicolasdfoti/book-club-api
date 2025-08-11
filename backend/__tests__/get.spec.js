@@ -4,6 +4,15 @@ const supertest = require("supertest");
 const { expect } = require("@jest/globals");
 const request = supertest(app);
 
+const db = require("../data/db");
+
+beforeAll((done) => {
+  db.intializeDb((err) => {
+    if (err) return done(err);
+    done();
+  });
+});
+
 describe("GET Routes Tests", () => {
   test("responds to /books", async () => {
     const res = await request.get("/books");
