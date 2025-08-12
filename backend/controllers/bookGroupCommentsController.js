@@ -5,17 +5,15 @@ const { bookGroupCommentValidation } = require("../utils/validation.js");
 const getAllBookGroupComments = async (req, res) => {
   try {
     const database = await mongodb.getDb();
-    const cursor = database.collection("bookGroupComments").find();
+    const cursor = database.collection("book_group_comments").find();
     const comments = await cursor.toArray();
     res.status(200).json(comments);
   } catch (err) {
     console.error("Error fetching book group comments:", err);
-    res
-      .status(500)
-      .json({
-        error: "Error fetching book group comments",
-        details: err.message,
-      });
+    res.status(500).json({
+      error: "Error fetching book group comments",
+      details: err.message,
+    });
   }
 };
 
@@ -24,7 +22,7 @@ const getSingleBookGroupComment = async (req, res) => {
     const commentId = new ObjectId(req.params.id);
     const database = await mongodb.getDb();
     const comment = await database
-      .collection("bookGroupComments")
+      .collection("book_group_comments")
       .findOne({ _id: commentId });
     if (!comment) {
       return res.status(404).json({ error: "Book group comment not found" });
@@ -32,12 +30,10 @@ const getSingleBookGroupComment = async (req, res) => {
     res.status(200).json(comment);
   } catch (err) {
     console.error("Error fetching book group comment:", err);
-    res
-      .status(500)
-      .json({
-        error: "Error fetching book group comment",
-        details: err.message,
-      });
+    res.status(500).json({
+      error: "Error fetching book group comment",
+      details: err.message,
+    });
   }
 };
 
@@ -54,7 +50,7 @@ const createBookGroupComment = async (req, res) => {
     }
     const database = await mongodb.getDb();
     const result = await database
-      .collection("bookGroupComments")
+      .collection("book_group_comments")
       .insertOne(comment);
     res.status(201).json({
       message: "Book group comment created successfully",
@@ -62,12 +58,10 @@ const createBookGroupComment = async (req, res) => {
     });
   } catch (error) {
     console.error("Error creating book group comment:", error);
-    return res
-      .status(500)
-      .json({
-        message: "Error creating book group comment",
-        error: error.message,
-      });
+    return res.status(500).json({
+      message: "Error creating book group comment",
+      error: error.message,
+    });
   }
 };
 
@@ -76,7 +70,7 @@ const deleteBookGroupComment = async (req, res) => {
     const commentId = new ObjectId(req.params.id);
     const database = await mongodb.getDb();
     const result = await database
-      .collection("bookGroupComments")
+      .collection("book_group_comments")
       .deleteOne({ _id: commentId });
     if (result.deletedCount === 0) {
       return res.status(404).json({ error: "Book group comment not found" });
@@ -86,12 +80,10 @@ const deleteBookGroupComment = async (req, res) => {
       .json({ message: "Book group comment deleted successfully" });
   } catch (err) {
     console.error("Error deleting book group comment:", err);
-    res
-      .status(500)
-      .json({
-        error: "Error deleting book group comment",
-        details: err.message,
-      });
+    res.status(500).json({
+      error: "Error deleting book group comment",
+      details: err.message,
+    });
   }
 };
 
@@ -109,7 +101,7 @@ const updateBookGroupComment = async (req, res) => {
       return res.status(400).json({ error: error.details[0].message });
     }
     const result = await database
-      .collection("bookGroupComments")
+      .collection("book_group_comments")
       .updateOne({ _id: commentId }, { $set: comment });
     if (result.matchedCount === 0) {
       return res.status(404).json({ error: "Book group comment not found" });
@@ -119,12 +111,10 @@ const updateBookGroupComment = async (req, res) => {
       .json({ message: "Book group comment updated successfully" });
   } catch (err) {
     console.error("Error updating book group comment:", err);
-    res
-      .status(500)
-      .json({
-        error: "Error updating book group comment",
-        details: err.message,
-      });
+    res.status(500).json({
+      error: "Error updating book group comment",
+      details: err.message,
+    });
   }
 };
 

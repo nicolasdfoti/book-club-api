@@ -13,8 +13,7 @@ router.get("/", (req, res) => {
 
 router.use("/books", booksRoute);
 router.use("/users", usersRoute);
-router.use("/book-groups", bookGroupRoute);
-router.use("/book-group-comments", bookGroupCommentRoute);
+router.use("/bookgroups", bookGroupRoute);
 // Auth routes - authentication endpoints
 router.use("/auth", authRoutes);
 
