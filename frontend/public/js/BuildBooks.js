@@ -21,8 +21,6 @@ async function getBooks() {
   }
 }
 
-async function populateBooks(books) {}
-
 function createBook(book) {
   const bookCard = document.createElement("div");
   bookCard.className = "book-card";
@@ -30,13 +28,17 @@ function createBook(book) {
   bookCard.innerHTML = `
     <div class="book-media">
        <div class="book-cover">
-          <img src="/images/placeholder.png" alt="${book.bookName}" loading="lazy">
+          <img src="/images/placeholder.png" alt="${
+            book.bookName
+          }" loading="lazy">
        </div>
     </div>
     <div class="book-content">
       <h3 class="book-title">${book.bookName}</h3>
       <span class="book-info">${book.numberPages} pages</span>
-      <a class="discussion-button input-styles" href="#" aria-label="Discuss ${book.bookName}">Discuss</a>
+      <a class="discussion-button input-styles" href="/books/overview?id=${encodeURIComponent(
+        book._id
+      )}"" aria-label="Discuss ${book.bookName}">Discuss</a>
     </div>
   `;
 

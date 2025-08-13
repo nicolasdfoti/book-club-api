@@ -11,6 +11,13 @@ router.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../../frontend/public/views/index.html"));
 });
 
+router.get("/books/overview", (req, res) => {
+  const id = req.query.id;
+  res.sendFile(
+    path.join(__dirname, "../../frontend/public/views/discussion.html")
+  );
+});
+
 router.use("/books", booksRoute);
 router.use("/users", usersRoute);
 router.use("/bookgroups", bookGroupRoute);

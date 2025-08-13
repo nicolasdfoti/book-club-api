@@ -30,7 +30,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-image: url("/images/books3.jpg");
+  background-image: url("/images/books.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -67,6 +67,7 @@ main {
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-height: 80vh;
   align-self: center;
 }
 
@@ -81,7 +82,6 @@ main {
   outline: none;
   transition: background-color 0.2s ease;
 }
-
 .input-styles:hover {
   background-color: rgb(183.3052631579, 229.3947368421, 186.9631578947);
 }
@@ -100,17 +100,22 @@ header .navigation {
   height: 80%;
   margin-left: auto;
 }
+header .navigation ul {
+  display: flex;
+}
 header .navigation li {
   padding: 0.618em;
-}
-header .navigation li #account-button {
   font-size: 1.309em;
-  color: rgb(0, 0, 0);
   font-weight: 400;
-  padding: 0 0.25em;
+  margin: 0 0.25em;
+  border-radius: 7px;
+  transition: background-color 0.2s ease;
 }
 header .navigation li:hover {
-  text-decoration: underline;
+  background-color: rgb(197.5547826087, 162.9186956522, 118.1452173913);
+}
+header .navigation li a {
+  color: black;
 }
 
 footer {
@@ -200,28 +205,31 @@ Landing page
 .book-card .book-media {
   width: fit-content;
 }
-.book-card .book-media .book-cover {
+
+.book-cover {
   height: 200px;
+  align-self: center;
   overflow: hidden;
 }
-.book-card .book-media .book-cover img {
+.book-cover img {
   height: 100%;
   border: 1px solid rgba(0, 0, 0, 0.377);
   border-radius: 3px;
   overflow: hidden;
   aspect-ratio: 5.5/7.5;
 }
-.book-card .book-content {
+
+.book-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0.25rem 0.5rem;
   width: 100%;
 }
-.book-card .book-content .book-info {
+.book-content .book-info {
   margin: 0 0 0.382em 0;
 }
-.book-card .book-content .discussion-button {
+.book-content .discussion-button {
   width: 60%;
   text-align: center;
 }
@@ -237,6 +245,57 @@ Landing page
 .copyright {
   color: white;
   margin-top: 1em;
+}
+
+/********************
+Comments page
+*********************/
+.discussion-container {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.discussion-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.discussion-meta {
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 1rem;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment-form textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.comment-form .input-styles {
+  padding: 0.618em 1em;
+  margin-top: 1em;
+  width: fit-content;
+}
+
+#discussion-book-cover {
+  height: 300px;
 }
 
 /*# sourceMappingURL=styles.css.map */

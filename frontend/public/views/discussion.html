@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Discussion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/css/styles.css">
+    <script src="/js/discussion.js" defer></script>
+    <script src="/js/loadHeaderFooter.js" defer></script>
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <main>
+        <section class="discussion-container">
+            <div class="discussion-header">
+                <h1 id="book-title">Loading…</h1>
+                <div class="book-cover" id="discussion-book-cover">
+                    <img src="/images/placeholder.png" alt="${book.bookName}" loading="lazy">
+                </div>
+                <div class="discussion-meta">
+                    <span id="book-author"></span>
+                    <span id="book-extra"></span>
+                </div>
+            </div>
+            <div class="comments">
+                <h2>Comments</h2>
+                <!--<div id="comments-list"></div>-->
+                <form class="comment-form">
+                    <textarea id="comment-text" placeholder="Write a comment…" required></textarea>
+                    <button type="submit" class="input-styles">Post comment</button>
+                </form>
+                <p id="comment-hint" class="notice"></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+</html>

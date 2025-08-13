@@ -62,7 +62,7 @@ body {
   display: flex;
   flex-direction: column;
 
-  background-image: url("/images/books3.jpg");
+  background-image: url("/images/books.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -100,6 +100,7 @@ main {
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-height: 80vh;
   align-self: center;
 }
 
@@ -113,10 +114,10 @@ main {
   box-shadow: none;
   outline: none;
   transition: background-color 0.2s ease;
-}
 
-.input-styles:hover {
-  background-color: color.adjust($input-color, $lightness: 7%);
+  &:hover {
+    background-color: color.adjust($input-color, $lightness: 7%);
+  }
 }
 
 /********************
@@ -134,18 +135,21 @@ header {
     height: 80%;
     margin-left: auto;
 
+    ul {
+      display: flex;
+    }
     li {
       padding: $s;
-
-      #account-button {
-        font-size: 1.309em;
-        color: rgb(0, 0, 0);
-        font-weight: 400;
-        padding: 0 0.25em;
-      }
-
+      font-size: 1.309em;
+      font-weight: 400;
+      margin: 0 0.25em;
+      border-radius: 7px;
+      transition: background-color 0.2s ease;
       &:hover {
-        text-decoration: underline;
+        background-color: color.adjust($primary, $lightness: 7%);
+      }
+      a {
+        color: black;
       }
     }
   }
@@ -246,38 +250,38 @@ Landing page
   .book-media {
     width: fit-content;
     //book-cover is an image wrapper
-    .book-cover {
-      height: 200px;
-      overflow: hidden;
+  }
+}
+.book-cover {
+  height: 200px;
+  align-self: center;
+  overflow: hidden;
 
-      img {
-        height: 100%;
-        border: 1px solid rgba(0, 0, 0, 0.377);
-        border-radius: 3px;
-        overflow: hidden;
-        aspect-ratio: 5.5/7.5;
-      }
-    }
+  img {
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.377);
+    border-radius: 3px;
+    overflow: hidden;
+    aspect-ratio: 5.5/7.5;
+  }
+}
+///////////////////////////////////////////////////////////
+
+.book-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+
+  //currently just number of pages
+  .book-info {
+    margin: 0 0 $xs 0;
   }
 
-  ///////////////////////////////////////////////////////////
-
-  .book-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0.25rem 0.5rem;
-    width: 100%;
-
-    //currently just number of pages
-    .book-info {
-      margin: 0 0 $xs 0;
-    }
-
-    .discussion-button {
-      width: 60%;
-      text-align: center;
-    }
+  .discussion-button {
+    width: 60%;
+    text-align: center;
   }
 }
 
@@ -291,4 +295,56 @@ Landing page
 .copyright {
   color: white;
   margin-top: $m;
+}
+
+/********************
+Comments page
+*********************/
+
+.discussion-container {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.discussion-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.discussion-meta {
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 1rem;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: $m;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment-form textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.comment-form .input-styles {
+  padding: $s $m;
+  margin-top: $m;
+  width: fit-content;
+}
+
+#discussion-book-cover {
+  height: 300px;
 }
