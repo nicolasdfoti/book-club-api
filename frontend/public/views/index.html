@@ -15,18 +15,15 @@
     <!--css-->
     <link rel="stylesheet" href="../styles/css/styles.css">
 
+    <!--JavaScript-->
+    <script src="js/buildBooks.js" defer></script>
+    <script src="js/loadHeaderFooter.js" defer></script>
+
 </head>
 
 <body>
     <header>
-        <div class="navigation">
-            <nav>
-                <ul>
-                    <!--either implement EJS or JavaScript that checks if user is logged in, if not, change to "Log in"-->
-                    <li><a href="/contact/" id="account-button" class="input-styles">My Account</a></li>
-                </ul>
-            </nav>
-        </div>
+
     </header>
 
     <main>
@@ -42,10 +39,10 @@
 
         </section>
         <section class="dynamic-content">
+            <h2 class="book-container-header">Ongoing Discussions</h2>
             <div class="book-container">
 
-                <h1 class="book-container-header">Stuff goes here.</h1>
-                <!--
+                <!-- OLD FORMAT
                 <div class="book-card">
                     <img src="#" alt="">
                     <div class="book-title-container">
@@ -53,28 +50,14 @@
                     </div>
                     <a href="" class="discussion-button"></a>
                 </div>
-                <div class="book-card">
-                    <img src="#" alt="">
-                    <div class="book-title-container">
-                        <h3 class="book-title"></h3>
-                    </div>
-                    <a href="" class="discussion-button"></a>
-                </div>
-                <div class="book-card">
-                    <img src="#" alt="">
-                    <div class="book-title-container">
-                        <h3 class="book-title"></h3>
-                    </div>
-                    <a href="" class="discussion-button"></a>
-                </div>-->
+-->
 
             </div>
 
         </section>
     </main>
     <footer>
-        <p>random footer words</p>
-    </footer>
+
 </body>
 
 </html>
