@@ -152,6 +152,7 @@ header {
 }
 footer {
   display: flex;
+  flex-direction: column;
   background-color: rgb(88, 88, 88);
   width: 100%;
   margin-top: auto;
@@ -206,22 +207,90 @@ Landing page
   flex-direction: column;
   width: 100%;
   background-color: $background-color;
-  height: clamp(400px, 50vh, 1280px);
-  align-items: center;
-  justify-content: center;
-}
 
-.book-container {
-  display: flex;
-  min-height: 80%;
-  min-width: 50%;
-  background-color: black;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .book-container-header {
   color: white;
   font-weight: 700;
   font-size: $xl;
+}
+
+.book-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: $l;
+  width: min(1100px, 90%);
+  background-color: $background-color;
+  align-items: start;
+  justify-content: center;
+  border: 1px solid black;
+  padding: $xs;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  padding: $m 0;
+
+  //book-media and book-content are the layout of the card
+  .book-media {
+    width: fit-content;
+    //book-cover is an image wrapper
+    .book-cover {
+      height: 200px;
+      overflow: hidden;
+
+      img {
+        height: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.377);
+        border-radius: 3px;
+        overflow: hidden;
+        aspect-ratio: 5.5/7.5;
+      }
+    }
+  }
+
+  ///////////////////////////////////////////////////////////
+
+  .book-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    width: 100%;
+
+    .book-title {
+    }
+
+    //currently just number of pages
+    .book-info {
+      margin: 0 0 $xs 0;
+    }
+
+    .discussion-button {
+      width: 60%;
+      text-align: center;
+    }
+  }
+}
+
+.credits {
+  color: white;
+}
+.credits-header {
+  font-size: $l;
+}
+
+.copyright {
+  color: white;
+  margin-top: $m;
 }
