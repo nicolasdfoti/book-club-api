@@ -42,6 +42,7 @@ const createBookGroupComment = async (req, res) => {
     commentText: req.body.commentText,
     userName: req.body.userName,
     bookGroupId: req.body.bookGroupId,
+    commentDate: new Date(req.body.commentDate),
   };
   try {
     const { error } = bookGroupCommentValidation.validate(req.body);
@@ -95,6 +96,7 @@ const updateBookGroupComment = async (req, res) => {
       commentText: req.body.commentText,
       userName: req.body.userName,
       bookGroupId: req.body.bookGroupId,
+      commentDate: new Date(req.body.commentDate),
     };
     const { error } = bookGroupCommentValidation.validate(req.body);
     if (error) {

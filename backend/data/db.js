@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path: "./backend/.env" });
 const MongoClient = require("mongodb").MongoClient;
 
 let db;
@@ -10,7 +10,7 @@ const intializeDb = (callback) => {
     console.log("Database already initialized");
     return callback(null, db);
   }
-  MongoClient.connect(`${MONGODB_URI}` + `/${DB_NAME}`)
+  MongoClient.connect(MONGODB_URI)
     .then((client) => {
       db = client.db(DB_NAME);
       callback(null, db);
