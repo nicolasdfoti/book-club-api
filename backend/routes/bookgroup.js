@@ -6,7 +6,7 @@ const { requiresAuth } = require("express-openid-connect");
 
 /**
  * @swagger
- * /book-groups:
+ * /bookgroups:
  *   get:
  *     summary: Get all book Groups
  *     tags:
@@ -19,7 +19,7 @@ router.get("/", controller.getAllBookGroups);
 
 /**
  * @swagger
- * /book-groups/{id}:
+ * /bookgroups/{id}:
  *   get:
  *     summary: Get a book-group by ID
  *     tags:
@@ -43,7 +43,7 @@ router.get("/:id", controller.getSingleBookGroup);
 
 /**
  * @swagger
- * /book-groups:
+ * /bookgroups:
  *   post:
  *     summary: Create a new Book Group
  *     tags:
@@ -74,7 +74,7 @@ router.post("/", requiresAuth(), controller.createBookGroup);
 // PUT route to update a book
 /**
  * @swagger
- * /book-groups/{id}:
+ * /bookgroups/{id}:
  *   put:
  *     summary: Update a book group using the ID
  *     tags:
@@ -112,7 +112,7 @@ router.put("/:id", requiresAuth(), controller.updateBookGroup);
 // DELETE route to delete a book
 /**
  * @swagger
- * /book-groups/{id}:
+ * /bookgroups/{id}:
  *   delete:
  *     summary: Delete a book using ID
  *     tags:
